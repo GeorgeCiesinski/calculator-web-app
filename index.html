@@ -6,26 +6,26 @@
     <link rel="stylesheet" href="css/style.css"
 </head>
 <body>
-    <h1>Basic Calculator</h1>
+    <h1>BASIC CALCULATOR</h1>
     <div id="calculator-body">
         <div id="display">
-            8008135
+            <p id="display-characters">8008135</p>
         </div>
         <div id="button-pad">
         <!--
-            Button pad with the below layout
+        Button pad with the below layout
 
-            AC  +/- xy  /
-            7   8   9   *
-            4   5   6   -
-            1   2   3   +
-            [  0  ] .   =
+        AC  +/- xy  /
+        7   8   9   *
+        4   5   6   -
+        1   2   3   +
+        [  0  ] .   =
         -->
             <div id="left-side">
                 <div id="aux-keys">
                     <button type="button" id="key-ac" class="button">AC</button>
                     <button type="button" id="key-plus-minus" class="button">±</button>
-                    <button type="button" ud="key-power" class="button">xy</button>
+                    <button type="button" ud="key-power" class="button">x<sup>y</sup></button>
                 </div>
                 <div id="num-keys">
                     <div class="row">
@@ -44,7 +44,7 @@
                         <button type="button" id="key-3" class="button">3</button>
                     </div>
                     <div class="row">
-                        <button type="button" id="key-0" class="button">0</button>
+                        <button type="button" id="key-0" class="button wide-button">0</button>
                         <button type="button" id="key-decimal" class="button">.</button>
                     </div>
                 </div>

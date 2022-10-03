@@ -1,8 +1,63 @@
+/*
+CALCULATOR BODY
+*/
+
+* {
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calculator-body, #display {
+    border-radius: 5px;
+}
+
+#calculator-body {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 10px 10px 10px grey;
+}
+
+#display {
+    font-size: 5vmin;
+    text-align: right;
+    padding: 1vw;
+    margin: 2vw 2vw 0 2vw;
+    border: 1px solid black;
+}
+
+#display p {
+    margin: 0;
+}
+
+/*
+BUTTON PAD
+*/
 #button-pad {
+    margin: 2vw;
     display: flex;
 }
 
 #operator-keys {
     display: flex;
     flex-direction: column;
+}
+
+#aux-keys, .row {
+    display: flex;
+}
+
+.button {
+    font-size: 5vmin;
+    height: 10vmin;
+    width: 12vmin;
+}
+
+#key-0 {
+    width: 24vmin;
 }
