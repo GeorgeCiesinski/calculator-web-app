@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator Web App</title>
+    <link rel="stylesheet" href="css/style.css"
+</head>
+<body>
+    <h1>Basic Calculator</h1>
+    <div id="calculator-body">
+        <div id="display">
+            8008135
+        </div>
+        <div id="button-pad">
+        <!--
+            Button pad with the below layout
+
+            AC  +/- xy  /
+            7   8   9   *
+            4   5   6   -
+            1   2   3   +
+            [  0  ] .   =
+        -->
+            <div id="left-side">
+                <div id="aux-keys">
+                    <button type="button" id="key-ac" class="button">AC</button>
+                    <button type="button" id="key-plus-minus" class="button">±</button>
+                    <button type="button" ud="key-power" class="button">xy</button>
+                </div>
+                <div id="num-keys">
+                    <div class="row">
+                        <button type="button" id="key-7" class="button">7</button>
+                        <button type="button" id="key-8" class="button">8</button>
+                        <button type="button" id="key-9" class="button">9</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="key-4" class="button">4</button>
+                        <button type="button" id="key-5" class="button">5</button>
+                        <button type="button" id="key-6" class="button">6</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="key-1" class="button">1</button>
+                        <button type="button" id="key-2" class="button">2</button>
+                        <button type="button" id="key-3" class="button">3</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="key-0" class="button">0</button>
+                        <button type="button" id="key-decimal" class="button">.</button>
+                    </div>
+                </div>
+            </div>
+            <div id="operator-keys">
+                <button type="button" id="key-divide" class="button">/</button>
+                <button type="button" id="key-multiply" class="button">x</button>
+                <button type="button" id="key-minus" class="button">-</button>
+                <button type="button" id="key-plus" class="button">+</button>
+                <button type="button" id="key-equals" class="button">=</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
