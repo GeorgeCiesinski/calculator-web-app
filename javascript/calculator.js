@@ -2,19 +2,15 @@ let calculatorArray = [];
 
 const buttonClick = function(e) {
 
-    // Search buttonValues for id
+    // Get button value object
     const buttonValue = buttonValues.find(item => item.id === e.target.id);
 
-    if (typeof(buttonValue) !== "undefined") {
-        checkInput(buttonValue);  // Check if number or operator
-    }
-
     if (e.target.id === "key-ac") {
-        clearDisplay();
-    }
-
-    if (e.target.id === "key-equals") {
+        clearArray();
+    } else if (e.target.id === "key-equals") {
         // Evaluate Calculation
+    } else {
+        checkInput(buttonValue);  // Check if number or operator
     }
 
     updateDisplay();
@@ -26,30 +22,25 @@ const checkInput = function(buttonValue) {
     console.log(typeof(lastItem));
     if (typeof(lastItem) === "number" && typeof(newItem) ==="number") {
         buildNumber(newItem);
+    } else if (typeof(lastItem) === "undefined" && typeof(newItem) !=="number") { 
+        // Do nothing - This occurs when user inputs an operator before a number
     } else {
         appendOperator(newItem);
     }
 }
 
 const buildNumber = function(value) {
-    let newValue = null; 
-    // Get last item in calculator array as string
     const previousValue = calculatorArray.pop();
-    // append new value to string
-    newValue = `${previousValue}${value}`;
-    
-    // replace last item in array
+    const newValue = `${previousValue}${value}`;
     calculatorArray.push(parseInt(newValue));
 }
 
 const appendOperator = function(value) {
     calculatorArray.push(value);
-    console.log("pushing");
 }
 
-const clearDisplay = function() {
+const clearArray = function() {
     calculatorArray = [];  // Clear array
-    updateDisplay();  // Update display with cleared array
 };
 
 const updateDisplay = function() {
