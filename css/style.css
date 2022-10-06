@@ -40,6 +40,7 @@ body h1 {
   text-shadow: 2px 2px 2px grey; }
 
 #display {
+  height: 6vmin;
   background-color: var(--display-color);
   font-size: 5vmin;
   text-align: right;
