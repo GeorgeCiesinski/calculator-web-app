@@ -21,24 +21,30 @@ const buttonClick = function(e) {
 }
 
 const checkInput = function(buttonValue) {
-    if (typeof(calculatorArray.at(-1)) === "number") {
-        buildNumber(buttonValue.value);
+    const lastItem = calculatorArray.at(-1);
+    const newItem = buttonValue.value;
+    console.log(typeof(lastItem));
+    if (typeof(lastItem) === "number" && typeof(newItem) ==="number") {
+        buildNumber(newItem);
     } else {
-        appendOperator(buttonValue.value);
+        appendOperator(newItem);
     }
 }
 
 const buildNumber = function(value) {
+    let newValue = null; 
     // Get last item in calculator array as string
     const previousValue = calculatorArray.pop();
     // append new value to string
-    const newValue = `${previousValue}${value}`;
+    newValue = `${previousValue}${value}`;
+    
     // replace last item in array
     calculatorArray.push(parseInt(newValue));
 }
 
 const appendOperator = function(value) {
     calculatorArray.push(value);
+    console.log("pushing");
 }
 
 const clearDisplay = function() {
