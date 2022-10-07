@@ -12,6 +12,10 @@ const buttonClick = function(e) {
     if (e.target.id === "key-ac") {
         clearArray();
     } else if (e.target.id === "key-equals") {
+        if (typeof(calculatorArray.at(-1)) === "string") {
+            // Removes operator if it is at the end of the calculator array
+            removeLast();
+        }
         evaluateArray();
     } else {
         checkInput(buttonValue);  // Check if number or operator
@@ -32,8 +36,14 @@ const checkInput = function(buttonValue) {
             pushItem(newItem);  // Operator
         }
     } else if (typeof(lastItem) === "string") {
-        // If latest is an operator, start a new number
-        pushItem(newItem);
+        // If latest is an operator, ensure another operator isn't added
+        if (typeof(newItem) === "string") {
+            replaceLast(newItem);
+        } else {
+            // Number
+            pushItem(newItem);
+        }
+        
     } else if (typeof(lastItem) === "undefined") {
         // If array is empty, start a new number
         // Ensures array cannot start with an operator
@@ -49,7 +59,13 @@ const buildNumber = function(value) {
     calculatorArray.push(parseInt(newValue));
 }
 
-const pushItem = value => calculatorArray.push(value);
+const pushItem = value => calculatorArray.push(value);  // Adds new item to calculator array
+
+// Removes last item from calculator array - used to remove an operator before 
+const removeLast = () => calculatorArray.splice(-1);  
+
+// Replaces last item in calculator array - used to replace an operator instead of stacking two operators
+const replaceLast = value => calculatorArray.splice(-1, 1, value);  
 
 const evaluateArray = function() {
 
