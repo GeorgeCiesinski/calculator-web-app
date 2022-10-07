@@ -57,8 +57,4 @@ const buttonValues = [
         "id": "key-plus",
         "value": "+"
     },
-    // {
-    //     "id": "key-equals",
-    //     "value": "="
-    // },
 ]
