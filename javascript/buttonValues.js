@@ -40,7 +40,7 @@ const buttonValues = [
         "id": "key-9",
         "value": 9
     },
-    //Operators
+    // Main Operators
     {
         "id": "key-divide",
         "value": "/"
@@ -56,5 +56,10 @@ const buttonValues = [
     {
         "id": "key-plus",
         "value": "+"
+    },
+    // Accessory operators
+    {
+        "id": "key-power",
+        "value": "^"
     },
 ]

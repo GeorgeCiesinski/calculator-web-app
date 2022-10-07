@@ -73,6 +73,9 @@ const evaluateArray = function() {
     
     operations = [
         {
+            "operator": "^",
+            "function": exponent
+        },{
             "operator": "/",
             "function": divide
         },{
@@ -109,6 +112,7 @@ const updateDisplay = () => displayCalculation.textContent = calculatorArray.joi
 CALCULATIONS
 */
 
+const exponent = (num1, num2) => num1 ** num2;
 const divide = (num1, num2) => num1 / num2;
 const multiply = (num1, num2) => num1 * num2;
 const add = (num1, num2) => num1 + num2;
