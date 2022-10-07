@@ -27,19 +27,20 @@ const buttonClick = function(e) {
 const checkInput = function(buttonValue) {
     const lastItem = calculatorArray.at(-1);
     const newItem = buttonValue.value;
+
     // Check if the latest item in an array is a number, operator, or if the array is empty
     if (typeof(lastItem) === "number") {
         // If latest is a number, either continue building the number or finish it and add an operator to array
-        if (typeof(newItem) ==="number") {
+        if (buttonValue.type ==="number" || buttonValue.type ==="number-modifier") {
             buildNumber(newItem);
         } else {
             pushItem(newItem);  // Operator
         }
     } else if (typeof(lastItem) === "string") {
         // If latest is an operator, ensure another operator isn't added
-        if (typeof(newItem) === "string") {
+        if (buttonValue.type === "operator") {
             replaceLast(newItem);
-        } else {
+        } else if (buttonValue.type == "number") {
             // Number
             pushItem(newItem);
         }
@@ -47,16 +48,17 @@ const checkInput = function(buttonValue) {
     } else if (typeof(lastItem) === "undefined") {
         // If array is empty, start a new number
         // Ensures array cannot start with an operator
-        if (typeof(newItem) ==="number") {
+        if (buttonValue.type === "number") {
             pushItem(newItem);
         }
     }
 }
 
 const buildNumber = function(value) {
+    console.log(`Received ${value}`)
     const previousValue = calculatorArray.pop();
     const newValue = `${previousValue}${value}`;
-    calculatorArray.push(parseInt(newValue));
+    calculatorArray.push(parseFloat(newValue));
 }
 
 const pushItem = value => calculatorArray.push(value);  // Adds new item to calculator array
