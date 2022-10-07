@@ -52,24 +52,36 @@ const buildNumber = function(value) {
 const pushItem = value => calculatorArray.push(value);
 
 const evaluateArray = function() {
-    
-    // Todo: Create an array with objects containing operators/calculations
-    // For each object, run the below while loop, iterating through the different operations in bedmas order
 
-    // Division
-    while (calculatorArray.includes("/")) {
-        const length = calculatorArray.length;
-        const index = calculatorArray.indexOf("/");
-        const num1 = calculatorArray.at(index-1);
-        const num2 = calculatorArray.at(index+1);
-        if (num2 <= length - 1) {
-            result = divide(num1, num2);
-            calculatorArray.splice(index - 1, 3, result);
+    console.log(calculatorArray);
+    
+    operations = [
+        {
+            "operator": "/",
+            "function": divide
+        },{
+            "operator": "x",
+            "function": multiply
+        },{
+            "operator": "+",
+            "function": add
+        },{
+            "operator": "-",
+            "function": subtract
         }
-    }
-    // Multiplication
-    // Addition
-    // Subtraction
+    ]
+
+    operations.forEach(function(operation) {
+        while (calculatorArray.includes(operation.operator)) {
+            const index = calculatorArray.indexOf(operation.operator);
+            const num1 = calculatorArray.at(index-1);
+            const num2 = calculatorArray.at(index+1);
+            // if (index + 1 <= calculatorArray.length - 1) {
+            result = operation.function(num1, num2);
+            calculatorArray.splice(index - 1, 3, result);
+            // }
+        }
+    })
     updateDisplay();
 }
 
