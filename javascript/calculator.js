@@ -9,59 +9,69 @@ const buttonClick = function(e) {
     // Get button value object
     const buttonValue = buttonValues.find(item => item.id === e.target.id);
 
+    // Check if clear, equals, or other
     if (e.target.id === "key-ac") {
         clearArray();
     } else if (e.target.id === "key-equals") {
+        // Remove trailing operator if exists
         if (typeof(calculatorArray.at(-1)) === "string") {
-            // Removes operator if it is at the end of the calculator array
             removeLast();
         }
         evaluateArray();
+    // Check if number, number modifier, or operator
     } else {
-        checkInput(buttonValue);  // Check if number or operator
+        checkInput(buttonValue);
     }
 
     updateDisplay();
 }
 
 const checkInput = function(buttonValue) {
-    const lastItem = calculatorArray.at(-1);
-    const newItem = buttonValue.value;
+    const lastItem = calculatorArray.at(-1);  // Get final item in array
+    const newItem = buttonValue.value;  // Get the value of button pressed
 
-    // Check if the latest item in an array is a number, operator, or if the array is empty
+    // Last item Number
     if (typeof(lastItem) === "number") {
-        // If latest is a number, either continue building the number or finish it and add an operator to array
+        // Add to number
         if (buttonValue.type ==="number" || buttonValue.type ==="number-modifier") {
             buildNumber(newItem);
+        // End number and start operator
         } else {
-            pushItem(newItem);  // Operator
-        }
-    } else if (typeof(lastItem) === "string") {
-        // If latest is an operator, ensure another operator isn't added
-        if (buttonValue.type === "operator") {
-            replaceLast(newItem);
-        } else if (buttonValue.type == "number") {
-            // Number
             pushItem(newItem);
         }
-        
+
+    // Last item operator
+    } else if (typeof(lastItem) === "string" && lastItem !== ".") {
+        // Replace operator instead of adding another operator
+        if (buttonValue.type === "operator") {
+            replaceLast(newItem);
+        // Start next number
+        } else if (buttonValue.type == "number") {
+            pushItem(newItem);
+        }
+
+    // Last item decimal
+    } else if (lastItem === ".") {
+        // Create decimal number
+
+    // Start first number
     } else if (typeof(lastItem) === "undefined") {
-        // If array is empty, start a new number
-        // Ensures array cannot start with an operator
-        if (buttonValue.type === "number") {
+        // Ensure first item is an integer or decimal
+        if (buttonValue.type === "number" || newItem === ".") {
             pushItem(newItem);
         }
     }
 }
 
+// Builds an integer number
 const buildNumber = function(value) {
-    console.log(`Received ${value}`)
     const previousValue = calculatorArray.pop();
     const newValue = `${previousValue}${value}`;
     calculatorArray.push(parseFloat(newValue));
 }
 
-const pushItem = value => calculatorArray.push(value);  // Adds new item to calculator array
+// Adds new item to calculator array
+const pushItem = value => calculatorArray.push(value);  
 
 // Removes last item from calculator array - used to remove an operator before 
 const removeLast = () => calculatorArray.splice(-1);  
@@ -69,6 +79,7 @@ const removeLast = () => calculatorArray.splice(-1);
 // Replaces last item in calculator array - used to replace an operator instead of stacking two operators
 const replaceLast = value => calculatorArray.splice(-1, 1, value);  
 
+// Carries out BEDMAS calculations to get the result
 const evaluateArray = function() {
 
     console.log(calculatorArray);
@@ -87,7 +98,7 @@ const evaluateArray = function() {
             "operator": "+",
             "function": add
         },{
-            "operator": "-",
+            "operator": "–",
             "function": subtract
         }
     ]
@@ -97,12 +108,11 @@ const evaluateArray = function() {
             const index = calculatorArray.indexOf(operation.operator);
             const num1 = calculatorArray.at(index-1);
             const num2 = calculatorArray.at(index+1);
-            // if (index + 1 <= calculatorArray.length - 1) {
             result = operation.function(num1, num2);
             calculatorArray.splice(index - 1, 3, result);
-            // }
         }
     })
+    
     updateDisplay();
 }
 

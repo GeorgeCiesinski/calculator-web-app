@@ -63,7 +63,7 @@ const buttonValues = [
     },
     {
         "id": "key-minus",
-        "value": "-",
+        "value": "–",  // Uses en-dash
         "type": "operator"
     },
     {
@@ -77,6 +77,11 @@ const buttonValues = [
         "type": "operator"
     },
     // Miscellaneous
+    {
+        "id": "key-plus-minus",
+        "value": "-",
+        "type": "number-prefix"  // 
+    },
     {
         "id": "key-decimal",
         "value": ".",
