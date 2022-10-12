@@ -136,6 +136,7 @@ const evaluateArray = function() {
         }
     })
     
+    console.log(calculatorArray);
     updateDisplay();
 }
 
