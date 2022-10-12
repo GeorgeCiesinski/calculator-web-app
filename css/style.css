@@ -42,12 +42,12 @@ body h1 {
 #display {
   height: 6vmin;
   background-color: var(--display-color);
-  font-size: 5vmin;
   text-align: right;
   padding: 1vw;
   margin: 2vw 2vw 0 2vw; }
 
-#display p {
+#display-calculation {
+  font-size: 5vmin;
   margin: 0; }
 
 /*
