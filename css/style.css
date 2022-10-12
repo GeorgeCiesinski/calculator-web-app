@@ -45,7 +45,7 @@ body h1 {
   width: 48vmin;
   background-color: var(--display-color);
   text-align: right;
-  padding: 1vw;
+  padding: 0 1vw 0 1vw;
   margin: 2vw 2vw 0 2vw;
   overflow-y: hidden;
   overflow-x: scroll; }
