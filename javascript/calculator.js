@@ -121,22 +121,31 @@ const replaceLast = value => calculatorArray.splice(-1, 1, value);
 // Carries out BEDMAS calculations to get the result
 const evaluateArray = function() {
 
-    console.log(calculatorArray);
+    console.table(operators);  // Output operator array
+    console.log(calculatorArray);  // Output raw calculator array
 
     operators.forEach(function(item) {
         while (calculatorArray.includes(item.value)) {
             const index = calculatorArray.indexOf(item.value);
             const num1 = calculatorArray.at(index-1);
             const num2 = calculatorArray.at(index+1);
-            result = item.function(num1, num2);
+
+            console.log(item.function.name);  // Log function name
+            console.log([num1, num2]);  // Log numbers pushed to function
+
+            result = item.function(num1, num2); 
             if (!Number.isInteger(result)) {
-                result = result.toPrecision(Math.max(num1.countDecimals(), num2.countDecimals()));
+                decimalPlaces = Math.max(num1.countDecimals(), num2.countDecimals());
+                if (decimalPlaces > 0 && decimalPlaces <= 100) {
+                    result = result.toPrecision();
+                }
             }
-            calculatorArray.splice(index - 1, 3, result);
+            console.log(`Operation result = ${result}`);
+            calculatorArray.splice(index - 1, 3, Number(result));
         }
     })
     
-    console.log(calculatorArray);
+    console.log(`Final result = ${calculatorArray}`);
     updateDisplay();
 }
 
