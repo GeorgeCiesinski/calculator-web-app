@@ -48,11 +48,15 @@ body h1 {
 }
 
 #display {
-    height: 6vmin;
+    box-sizing: border-box;
+    height: 8vmin;
+    width: 48vmin;
     background-color: var(--display-color);
     text-align: right;
     padding: 1vw;
     margin: 2vw 2vw 0 2vw;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
 
 #display-calculation {
@@ -78,6 +82,7 @@ BUTTON PAD
 }
 
 .button {
+    box-sizing: border-box;
     font-size: 5vmin;
     height: 10vmin;
     width: 12vmin;

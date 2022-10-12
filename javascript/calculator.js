@@ -9,7 +9,7 @@ const multiply = (num1, num2) => num1 * num2;
 const add = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
 
-// Prototype function to count decimals of any Number
+// Prototype function to count decimals of any Number - usage: (a number).countDecimals()
 Number.prototype.countDecimals = function () {
     if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
     return this.toString().split(".")[1].length || 0; 
