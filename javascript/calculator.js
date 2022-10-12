@@ -2,11 +2,18 @@
 CALCULATIONS
 */
 
+// toPrecision ensures that floating point math error is unlikely to occur
 const exponent = (num1, num2) => num1 ** num2;
-const divide = (num1, num2) => num1 / num2;
-const multiply = (num1, num2) => num1 * num2;
-const add = (num1, num2) => num1 + num2;
-const subtract = (num1, num2) => num1 - num2;
+const divide = (num1, num2) => (num1 / num2).toPrecision(Math.max(num1.countDecimals(), num2.countDecimals()));
+const multiply = (num1, num2) => (num1 * num2).toPrecision(Math.max(num1.countDecimals(), num2.countDecimals()));
+const add = (num1, num2) => (num1 + num2).toPrecision(Math.max(num1.countDecimals(), num2.countDecimals()));
+const subtract = (num1, num2) => (num1 - num2).toPrecision(Math.max(num1.countDecimals(), num2.countDecimals()));
+
+// Prototype function to count decimals of any Number
+Number.prototype.countDecimals = function () {
+    if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
+    return this.toString().split(".")[1].length || 0; 
+}
 
 /*
 BUTTONS AND DISPLAY
